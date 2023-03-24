@@ -4,7 +4,7 @@ Scriptset to enable compositing in the Blender Flamenco Network Renderer
 Author: Dylan Blanqué
 
 Contributors:
-    - Sybren Stüvel
+* Sybren Stüvel
 
 # Usage
 For the moment this script has only been tested with Flamenco and Shaman enabled,
@@ -12,10 +12,10 @@ albeit it *should* be functional without Shaman, as the job paths and render out
 paths do not get modified.
 
 To use it you need to add the following variables to your Manager YAML config:
-    - storagePath
-    - jobSubPath
-    - renderSubPath
-    - deviceType
+* storagePath
+* jobSubPath
+* renderSubPath
+* deviceType
 
 An example configuration file is included.
 
