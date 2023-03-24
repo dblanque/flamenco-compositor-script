@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-// Flamenco Job Author: Dylan Blanque 2023
+// Author: Dylan Blanque
+// Reviewer: Sybren Stüvel
+// Updated: 2023-03-24
+// License: Script is licensed under GNUGPLv3
 // Blender Job for Flamenco Network Rendering with Compositor Support and
 // Multi-platform compatibility.
-// Job provided as is without any guarantee whatsoever.
 
 const JOB_TYPE = {
     label: "Multi-Pass Render (Blender Cycles)",
