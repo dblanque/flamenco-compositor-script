@@ -1,0 +1,59 @@
+# Configuration file for Flamenco.
+# For an explanation of the fields, refer to flamenco-manager-example.yaml
+#
+# NOTE: this file will be overwritten by Flamenco Manager's web-based configuration system.
+#
+# This file was written on 2023-03-23 15:23:19 -03:00 by Flamenco 3.2
+
+_meta:
+  version: 3
+manager_name: Flamenco Manager
+database: flamenco-manager.sqlite
+listen: :8080
+autodiscoverable: true
+local_manager_storage_path: ./flamenco-manager-storage
+shared_storage_path: /mnt/sambashare/project_files
+shaman:
+  enabled: true
+  garbageCollect:
+    period: 24h0m0s
+    maxAge: 744h0m0s
+    extraCheckoutPaths: []
+task_timeout: 10m0s
+worker_timeout: 1m0s
+blocklist_threshold: 3
+task_fail_after_softfail_count: 3
+variables:
+  blender:
+    values:
+    - platform: all
+      value: blender
+    - platform: linux
+      value: /usr/local/blender/blender
+#    - platform: windows
+#      value: C:/Program Files/Blender Foundation/Blender 3.4/blender.exe
+#    - platform: darwin
+#      value: /usr/bin/blender
+  blenderArgs:
+    values:
+    - platform: all
+      value: -b -y
+  storagePath:
+    values:
+    - platform: linux
+      value: /mnt/sambashare
+    - platform: windows
+      value: "Z:\\"
+  jobSubPath:
+    values:
+    - platform: all
+      value: project_files
+  renderSubPath:
+    values:
+    - platform: all
+      value: project_render
+  deviceType:
+    values:
+    - platform: all
+      value: "CUDA"
+    # Set the device type to FIRST to use whatever device type is detected first
