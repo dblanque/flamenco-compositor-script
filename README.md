@@ -1,6 +1,8 @@
-# flamenco-compositor-script
+# Flamenco Compositor Script and Job
 Scriptset to enable compositing in the Blender Flamenco Network Renderer
+
 Author: Dylan Blanqué
+
 Contributors:
     - Sybren Stüvel
 
