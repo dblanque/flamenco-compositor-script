@@ -8,7 +8,7 @@
 # ############################################################################ #
 
 import bpy
-from os import os_path
+from os import path as os_path
 import sys
 from bpy.app.handlers import persistent
 argv = sys.argv
