@@ -17,6 +17,7 @@ arg_parser = argparse.ArgumentParser(
 )
 arg_parser.add_argument("--custom-script", action="store_true")
 arg_parser.add_argument("--device-type")
+arg_parser.add_argument("--disable-compositing", action="store_true")
 arg_parser.add_argument("--disable-persistent-data", action="store_true")
 arg_parser.add_argument("--render-output")
 arg_parser.add_argument("--render-frames")
@@ -120,6 +121,8 @@ def enable_gpus():
 
 def fix_compositing_paths():
 	blender_scene = bpy.context.scene
+
+	if argv.disable_compositing: return
 
 	# Render Output Path Cleanup
 	render_output_path = argv.render_output
