@@ -9,13 +9,24 @@
 
 import bpy
 from os import path as os_path
-import sys
 from bpy.app.handlers import persistent
-argv = sys.argv
+import argparse
+
+arg_parser = argparse.ArgumentParser(
+	description="Add custom script hook before rendering a job in Flamenco",
+)
+arg_parser.add_argument("--custom-script", action="store_true")
+arg_parser.add_argument("--device-type")
+arg_parser.add_argument("--disable-persistent-data", action="store_true")
+arg_parser.add_argument("--disable-acceleration", action="store_true")
+arg_parser.add_argument("--render-output")
+arg_parser.add_argument("--render-frames")
+
+argv = arg_parser.parse_args()
 
 @persistent
 def main(self):
-	if "--custom-script" not in argv: return
+	if not argv.custom_script: return
 
 	try:
 		enable_gpus()
@@ -31,11 +42,35 @@ def main(self):
 		print(f"Exception Message: {e}")
 		raise
 
+	try:
+		enable_persistent_data()
+	except Exception as e:
+		print("Unhandled Exception: Could not enable Persistent Data Mode.")
+		print(f"Exception Message: {e}")
+		raise
+
+def enable_persistent_data():
+	# Enabled Persistent Texture/Image usage between renders in job chunks with
+	# more than 1 frame.
+	blender_scene = bpy.context.scene
+
+	if (
+		blender_scene.render.engine != "CYCLES" # Only works with Cycles.
+		or ".." not in argv.render_frame # If render frames aren't a range
+		or argv.disable_persistent_data  # If this option is explicitly disabled
+	): return
+
+	frames_in_job = argv.render_frame.split("..")
+	frames_in_job = int(frames_in_job[1]) - int(frames_in_job[0])
+
+	if frames_in_job > 1:
+		blender_scene.render.use_persistent_data = True
+
 def enable_gpus():
 	blender_scene = bpy.context.scene
 	blender_preferences = bpy.context.preferences
 
-	if blender_scene.render.engine != "CYCLES": return
+	if blender_scene.render.engine != "CYCLES" or argv.disable_acceleration: return
 
 	# Detect Devices
 	cycles_preferences = blender_preferences.addons["cycles"].preferences
@@ -54,14 +89,14 @@ def enable_gpus():
 	# Source: https://blender.stackexchange.com/questions/217912/get-access-to-the-device-type-gpu-and-cpu-activation
 	# Show detected devices and get priority compute type
 	first_detected_type = None
-	print("Devices:")
+	print("Detected Devices:")
 	for device in device_list:
 		print(f"\t{device.name} ({device.type})")
 		if device.type != "CPU" and not first_detected_type:
 			first_detected_type = device.type
 
 	# Set the device_type
-	selected_device_type = argv[argv.index("--device-type") + 1]
+	selected_device_type = argv.device_type
 	if selected_device_type == "FIRST" or selected_device_type not in compute_types:
 		print(f"Cycles Render will use the first non-CPU compute device type detected")
 		cycles_preferences.compute_device_type = first_detected_type
@@ -76,7 +111,7 @@ def enable_gpus():
 
 	for device in device_list:
 		if device.type == "CPU" or device.type == compute_device_type:
-			device["use"] = 1 # Using all devices, include GPU and CPU
+			device["use"] = 1 # Enable all devices, include GPU and CPU
 			print(f"Device {device.name} will be used ({device.use} - {device.type}).")
 
 	print("Enabled GPUs for Cycles where possible.")
@@ -85,7 +120,7 @@ def fix_compositing_paths():
 	blender_scene = bpy.context.scene
 
 	# Render Output Path Cleanup
-	render_output_path = argv[argv.index("--render-output") + 1]
+	render_output_path = argv.render_output
 	render_output_path = render_output_path.replace('\\','/')
 	render_output_path = os_path.split(render_output_path)[0]
 
