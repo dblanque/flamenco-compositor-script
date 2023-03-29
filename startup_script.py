@@ -1,7 +1,7 @@
 # ############################################################################ #
 # Author: Dylan Blanque
 # Reviewer: Sybren Stüvel
-# Updated: 2023-03-24
+# Created: 2023-03-24
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Blender Script for Flamenco Network Rendering with Compositor Support and
 # Multi-platform compatibility
