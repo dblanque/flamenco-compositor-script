@@ -18,7 +18,6 @@ arg_parser = argparse.ArgumentParser(
 arg_parser.add_argument("--custom-script", action="store_true")
 arg_parser.add_argument("--device-type")
 arg_parser.add_argument("--disable-persistent-data", action="store_true")
-arg_parser.add_argument("--disable-acceleration", action="store_true")
 arg_parser.add_argument("--render-output")
 arg_parser.add_argument("--render-frames")
 
@@ -70,7 +69,10 @@ def enable_gpus():
 	blender_scene = bpy.context.scene
 	blender_preferences = bpy.context.preferences
 
-	if blender_scene.render.engine != "CYCLES" or argv.disable_acceleration: return
+	if (
+		blender_scene.render.engine != "CYCLES" 
+     	or argv.device_type == "CPU"
+	): return
 
 	# Detect Devices
 	cycles_preferences = blender_preferences.addons["cycles"].preferences
@@ -92,7 +94,7 @@ def enable_gpus():
 	print("Detected Devices:")
 	for device in device_list:
 		print(f"\t{device.name} ({device.type})")
-		if device.type != "CPU" and not first_detected_type:
+		if not first_detected_type:
 			first_detected_type = device.type
 
 	# Set the device_type
