@@ -7,7 +7,7 @@ Contributors:
 * Sybren Stüvel
 
 # Usage
-For the moment this script has only been tested with Flamenco and Shaman enabled,
+**For the moment this script has only been tested with Flamenco and Shaman enabled**,
 albeit it *should* be functional without Shaman, as the job paths and render output
 paths do not get modified.
 
