@@ -22,7 +22,7 @@ arg_parser.add_argument("--disable-persistent-data", action="store_true")
 arg_parser.add_argument("--render-output")
 arg_parser.add_argument("--render-frames")
 
-argv = arg_parser.parse_args()
+argv, unknown = arg_parser.parse_args()
 
 @persistent
 def main(self):
