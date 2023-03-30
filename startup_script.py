@@ -9,24 +9,25 @@
 
 import bpy
 from os import path as os_path
+import sys
 from bpy.app.handlers import persistent
 import argparse
 
 arg_parser = argparse.ArgumentParser(
 	description="Add custom script hook before rendering a job in Flamenco",
 )
-arg_parser.add_argument("--custom-script", action="store_true")
 arg_parser.add_argument("--device-type")
 arg_parser.add_argument("--disable-compositing", action="store_true")
 arg_parser.add_argument("--disable-persistent-data", action="store_true")
 arg_parser.add_argument("--render-output")
 arg_parser.add_argument("--render-frames")
 
-argv, unknown = arg_parser.parse_known_args()
+argv, unknown = arg_parser.parse_known_args(sys.argv[1:])
 
 @persistent
 def main(self):
-	if not argv.custom_script: return
+	# !! Do not move this into the arg parser or the script ceases to work !! #
+	if "--custom-script" not in sys.argv: return
 
 	try:
 		enable_gpus()
@@ -56,11 +57,11 @@ def enable_persistent_data():
 
 	if (
 		blender_scene.render.engine != "CYCLES" # Only works with Cycles.
-		or ".." not in argv.render_frame # If render frames aren't a range
+		or ".." not in argv.render_frames # If render frames aren't a range
 		or argv.disable_persistent_data  # If this option is explicitly disabled
 	): return
 
-	frames_in_job = argv.render_frame.split("..")
+	frames_in_job = argv.render_frames.split("..")
 	frames_in_job = int(frames_in_job[1]) - int(frames_in_job[0])
 
 	if frames_in_job > 1:
