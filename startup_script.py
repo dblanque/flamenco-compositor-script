@@ -96,7 +96,7 @@ def enable_gpus():
 	print("Detected Devices:")
 	for device in device_list:
 		print(f"\t{device.name} ({device.type})")
-		if not first_detected_type:
+		if device.type != "CPU" and not first_detected_type:
 			first_detected_type = device.type
 
 	# Set the device_type
