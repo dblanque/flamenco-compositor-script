@@ -101,6 +101,10 @@ function authorRenderTasks(settings, renderDir, renderOutput) {
         settings.format = "TGA"
     }
 
+    // Ensures the correct path if the job is duplicated
+    const new_job_name_array = settings.blendfile.replace("\\", "/").split("/")
+    const new_job_name = new_job_name_array[new_job_name_array.length - 2]
+
     for (let chunk of chunks) {
         const task = author.Task(`render-${chunk}`, "blender");
         const command = author.Command("blender-render", {
@@ -109,7 +113,7 @@ function authorRenderTasks(settings, renderDir, renderOutput) {
             argsBefore: [
                 "-P", path.join("{storagePath}", "{jobSubPath}", "startup_script.py"),
             ],
-            blendfile: path.join("{storagePath}", "{jobSubPath}", "jobs", settings.jobname, blendfile_name),
+            blendfile: path.join("{storagePath}", "{jobSubPath}", "jobs", new_job_name, blendfile_name),
             args: [
                 "-noaudio",
                 "--render-output", path.join("{storagePath}", "{renderSubPath}", settings.jobname, path.basename(renderOutput)),
