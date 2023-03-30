@@ -137,7 +137,10 @@ def fix_compositing_paths():
 	blender_scene.use_nodes = True
 
 	# Get the File Output Nodes by type and put into a Generator
-	fo_nodes = (c_node for c_node in blender_scene.node_tree.nodes if c_node.bl_rna.identifier == "CompositorNodeOutputFile")
+	fo_nodes = (
+		c_node for c_node in blender_scene.node_tree.nodes
+		if c_node.bl_rna.identifier == "CompositorNodeOutputFile"
+	)
 
 	for node in fo_nodes:
 		try:
