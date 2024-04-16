@@ -92,11 +92,11 @@ variables:
         value: "CUDA"
     # Set the device type to FIRST or remove the variable definition
     # to use whatever device type is detected first.
-		# Valid Choices: 
-		# * CPU
-		# * CUDA
-		# * OPTIX
-		# * HIP
-		# * ONEAPI
-		# * FIRST
+    # Valid Choices: 
+    # * CPU
+    # * CUDA
+    # * OPTIX
+    # * HIP
+    # * ONEAPI
+    # * FIRST
 ```
