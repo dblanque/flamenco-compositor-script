@@ -111,12 +111,12 @@ function authorRenderTasks(settings, renderDir, renderOutput) {
             exe: "{blender}",
             exeArgs: "{blenderArgs}",
             argsBefore: [
-                "-P", path.join("{storagePath}", "{jobSubPath}", "startup_script.py"),
+                "-P", path.join("{clientStoragePath}", "{jobSubPath}", "startup_script.py"),
             ],
-            blendfile: path.join("{storagePath}", "{jobSubPath}", new_job_name, blendfile_name),
+            blendfile: path.join("{clientStoragePath}", "{jobSubPath}", new_job_name, blendfile_name),
             args: [
                 "-noaudio",
-                "--render-output", path.join("{storagePath}", "{renderSubPath}", settings.jobname, path.basename(renderOutput)),
+                "--render-output", path.join("{clientStoragePath}", "{renderSubPath}", new_job_name, path.basename(renderOutput)),
                 // ▼ Original Render Output Argument ▼
                 // "--render-output", path.join(renderDir, path.basename(renderOutput)),
                 "--render-format", settings.format,
