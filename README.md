@@ -33,8 +33,8 @@ folder in your Flamenco Manager Installation (Create it if it doesn't exist).
     * **deviceType**    - Compute Device Type to force (*do not set the variable if*
      *you wish to use whatever is available*)
 5. Submit your job from a Blender Client with the corresponding Multi-Pass Job,
-it should whatever compositor nodes you have set and correct the paths where
-necessary.
+it should use and render whatever compositor nodes you have set and automatically correct
+the paths where necessary.
 
 [compositorrepo]: https://github.com/dblanque/flamenco-compositor-script.git
 
