@@ -16,7 +16,7 @@ You'll need to do the following changes to support this workflow:
 (It's recommended to use a symbolic link to the git repo files)
 
 1. Clone the [Flamenco Compositor Script repository][compositorrepo]
-(you'll need to install **git**) or download the files manually to a directory
+(you'll need to install **git** to clone it) or [download the files manually](https://github.com/dblanque/flamenco-compositor-script/archive/refs/heads/main.zip) to a directory
 in your Flamenco Manager/Server.
 ```bash
 git clone https://github.com/dblanque/flamenco-compositor-script.git
