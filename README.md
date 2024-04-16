@@ -6,7 +6,7 @@ Author: Dylan Blanqué
 Contributors:
 * Sybren Stüvel
 
-### Tested with Blender >= 4.0
+### Tested with Blender >= 4.0 and Flamenco >= 3.5
 
 If you need to use Blender's **Compositor** Nodes with *Flamenco*,
 a Python Script and a Flamenco Job have been contributed to the community.
