@@ -30,8 +30,8 @@ folder in your Flamenco Manager Installation (Create it if it doesn't exist).
     * **clientStoragePath**   - Your NAS path, multi-platform variable.
     * **jobSubPath**    - Where the jobs are stored inside storagePath. (Default: jobs)
     * **renderSubpath** - Where the Render Output is stored inside storagePath. (Default: render)
-    * **deviceType**    - Compute Device Type to force *do not set the variable if*
-     *you wish to use whatever is available*
+    * **deviceType**    - Compute Device Type to force (*do not set the variable if*
+     *you wish to use whatever is available*)
 5. Submit your job from a Blender Client with the corresponding Multi-Pass Job,
 it should whatever compositor nodes you have set and correct the paths where
 necessary.
