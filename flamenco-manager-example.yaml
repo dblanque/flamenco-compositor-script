@@ -38,7 +38,7 @@ variables:
     values:
     - platform: all
       value: -b -y
-  storagePath:
+  clientStoragePath:
     values:
     - platform: linux
       value: /mnt/sambashare
