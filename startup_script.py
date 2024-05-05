@@ -130,6 +130,9 @@ def fix_compositing_paths():
 	render_output_path = render_output_path.replace('\\','/')
 	render_output_path = os_path.split(render_output_path)[0]
 
+	if not render_output_path.endswith('/'):
+		render_output_path += "/"
+
 	print("Executing compositor startup fixes.")
 	print(f"Output path: {render_output_path}")
 
