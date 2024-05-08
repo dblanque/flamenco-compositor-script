@@ -5,6 +5,7 @@ Author: Dylan Blanqué
 
 Contributors:
 * Sybren Stüvel
+* bigsmalloverall
 
 Successfully tested / works with **Blender 4.0** and **Flamenco 3.5**.
 
