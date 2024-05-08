@@ -21,10 +21,17 @@ in your Flamenco Manager/Server.
 ```bash
 git clone https://github.com/dblanque/flamenco-compositor-script.git
 ```
+
 2. Copy or make a symbolic link of the **startup_script.py** file
-to the root path of your configured *Network Attached Storage*.
+to the **root** path of your configured *Network Attached Storage*.
+
+![image](https://github.com/dblanque/flamenco-compositor-script/assets/68660667/9e38af56-7fe8-4673-9851-49368d1c8c0e)
+
 3. Copy or make a symbolic link of the multipass javascript job to the *scripts*
 folder in your Flamenco Manager Installation (Create it if it doesn't exist).
+
+![image](https://github.com/dblanque/flamenco-compositor-script/assets/68660667/1a2eb1a7-902f-4387-b108-8da94271ba9f)
+
 4. Add and configure the required variables from the *example Manager YAML*
 *Config* to your Flamenco Manager YAML.
     * **clientStoragePath**   - Your NAS path, multi-platform variable.
