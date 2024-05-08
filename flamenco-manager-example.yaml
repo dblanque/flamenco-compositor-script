@@ -1,10 +1,7 @@
 # Configuration file for Flamenco.
-# For an explanation of the fields, refer to flamenco-manager-example.yaml
 #
-# NOTE: this file will be overwritten by Flamenco Manager's web-based configuration system.
-#
-# This file was written on 2023-03-23 15:23:19 -03:00 by Flamenco 3.2
-
+# For an explanation of the fields, 
+# refer to the original flamenco-manager-example.yaml
 _meta:
   version: 3
 manager_name: Flamenco Manager
@@ -12,7 +9,7 @@ database: flamenco-manager.sqlite
 listen: :8080
 autodiscoverable: true
 local_manager_storage_path: ./flamenco-manager-storage
-shared_storage_path: /mnt/sambashare/project_files
+shared_storage_path: /mnt/data/flamenco
 shaman:
   enabled: true
   garbageCollect:
@@ -26,34 +23,40 @@ task_fail_after_softfail_count: 3
 variables:
   blender:
     values:
-    - platform: all
-      value: blender
-    - platform: linux
-      value: /usr/local/blender/blender
-#    - platform: windows
-#      value: C:/Program Files/Blender Foundation/Blender 3.4/blender.exe
-#    - platform: darwin
-#      value: /usr/bin/blender
+      - platform: linux
+        value: blender
+      - platform: windows
+        value: "C:\\Program Files\\Blender Foundation\\Blender 4.0\\blender.exe"
+      - platform: darwin
+        value: blender
   blenderArgs:
     values:
-    - platform: all
-      value: -b -y
+      - platform: all
+        value: -b -y
   clientStoragePath:
     values:
-    - platform: linux
-      value: /mnt/sambashare
-    - platform: windows
-      value: "Z:\\"
+      - platform: linux
+        value: /mnt/storage
+      - platform: windows
+        value: "Z:\\"
   jobSubPath:
     values:
-    - platform: all
-      value: project_files
+      - platform: all
+        value: jobs
   renderSubPath:
     values:
-    - platform: all
-      value: project_render
+      - platform: all
+        value: render
   deviceType:
     values:
-    - platform: all
-      value: "CUDA"
-    # Set the device type to FIRST to use whatever device type is detected first
+      - platform: all
+        value: "CUDA"
+    # Set the device type to FIRST or remove the variable definition
+    # to use whatever device type is detected first.
+    # Valid Choices: 
+    # * CPU
+    # * CUDA
+    # * OPTIX
+    # * HIP
+    # * ONEAPI
+    # * FIRST
