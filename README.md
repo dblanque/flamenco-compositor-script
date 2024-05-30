@@ -6,7 +6,7 @@ Author: Dylan Blanqué
 Contributors:
 * Sybren Stüvel
 
-Successfully tested / works with **Blender 4.0** and **Flamenco 3.5**.
+Successfully tested / works with **Blender 4.0** and **Flamenco 3.5** (Shaman Enabled).
 
 If you need to use Blender's **Compositor** Nodes with *Flamenco*,
 a Python Script and a Flamenco Job have been contributed to the community.
@@ -113,3 +113,6 @@ variables:
 Select the corresponding job in Blender when submitting it to Flamenco and voilá.
 
 *Multi-pass!*
+
+### Would you like to support me?
+<a href='https://ko-fi.com/E1E2YQ4TG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
